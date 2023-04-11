@@ -67,18 +67,17 @@ def rastrear_paginas(url):
 # Inicia o rastreamento na página inicial
 x=0
 while x < len(url):
+    # define as paginas para excessões onde não passarão no filtro
     if(len(url[x].text) < 32):
         print(url[x].text)
         rastrear_paginas(url[x].text)
-        #ff= 0
-        
+        # Filtro para pegar apenas páginas em Português
     elif (url[x].text[32] == 's' and url[x].text[33] == '/' or url[x].text[32] == 'r' and url[x].text[33] == '/' or url[x].text[32] == 'e' and url[x].text[33] == '/' or url[x].text[32] == 'h' and url[x].text[33] == '/' or url[x].text[32] == 'a' and url[x].text[33] == '/' or url[x].text[32] == 'o' and url[x].text[33] == '/' or url[x].text[32] == 'u' and url[x].text[33] == '/' or url[x].text[32] == 'r' and url[x].text[33] == '/'):
-       # ff=0
        print(url[x].text[32])
+        # pega o restante das páginas e chama o metodo para salvar os html das paginas visitadas
     else:
         print(url[x].text) 
         rastrear_paginas(url[x].text)
-       #ff=0
     x+=1      
 #
 
